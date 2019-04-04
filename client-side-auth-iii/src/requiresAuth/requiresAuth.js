@@ -15,7 +15,7 @@ export default function(Component) {
 
         render() {
             const token = localStorage.getItem('token');
-            const notLoggedIn = <h3>Please login to see the users</h3>
+            const notLoggedIn = <h3>Please login to see the users</h3>;
             // return axios.create({ headers: { authorization: token } });
 
             return(
