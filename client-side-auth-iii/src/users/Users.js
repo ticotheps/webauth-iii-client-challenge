@@ -22,6 +22,8 @@ class Users extends React.Component {
 
   componentDidMount() {
     // const endpoint = 'http://localhost:5000/api/users';
+    // ^^^No longer need this hardcoded endpoint because of what
+    // the axios.defaults.baseURL statement does for us in 'requiresAuth.js' file
     const endpoint = `/users`;
 
     // Created an 'axios.interceptors.request.use()' statement
