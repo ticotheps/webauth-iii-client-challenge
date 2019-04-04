@@ -12,7 +12,7 @@ class App extends Component {
       <div className="App">
         <header>
           <nav>
-            <NavLink to="/">Home</NavLink>
+            <NavLink exact to="/">Home</NavLink>
             &nbsp;|&nbsp;
             <NavLink to="/login">Login</NavLink>
             &nbsp;|&nbsp;
@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   logout = () => {
-    localStorage.removeItem('jwt');
+    localStorage.removeItem('token');
 
     this.props.history.push('/login');
   };

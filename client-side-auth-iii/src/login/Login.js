@@ -4,7 +4,7 @@ import axios from "axios";
 class Login extends React.Component {
   state = {
     username: "tico",
-    password: "blue"
+    password: "thep"
   };
 
   render() {
@@ -15,6 +15,7 @@ class Login extends React.Component {
           <div>
             <label htmlFor="username" />
             <input
+              name="username"
               id="username"
               value={this.state.username}
               onChange={this.handleInputChange}
@@ -24,43 +25,41 @@ class Login extends React.Component {
           <div>
             <label htmlFor="password" />
             <input
+              name="password"
               id="password"
               value={this.state.password}
               onChange={this.handleInputChange}
               type="password"
             />
           </div>
+
           <div>
-              <button type="submit">Login</button>
+            <button type="submit">Login</button>
           </div>
         </form>
       </div>
     );
   }
 
-  // allows the user to see what they are typing into the <input> field
   handleInputChange = event => {
-    const { id, value } = event.target;
+    const { name, value } = event.target;
 
-    this.setState({ [id]: value });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = event => {
     event.preventDefault();
 
-    const endpoint = "http://localhost:4000/api/auth/login";
+    const endpoint = 'http://localhost:4000/api/auth/login';
 
     axios
       .post(endpoint, this.state)
       .then(res => {
-        console.log('LOGIN RESPONSE:', res);
-        localStorage.setItem('token', res.data.token);
+        localStorage.setItem("token", res.data.token);
 
         this.props.history.push('/users');
       })
-      .catch(error => {
-        console.error('LOGIN ERROR: ', error);
-      });
+      .catch(error => console.error(error));
   };
 }
 
