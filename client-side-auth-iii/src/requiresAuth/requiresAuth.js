@@ -3,6 +3,9 @@ import axios from 'axios';
 
 // This HOC returns a component
 
+// tells axios to ALWAYS intercept the request and to do something with it
+axios.interceptors.request.use()
+
 export default function(Component) {
     return class Authenticated extends React.Component {
 
