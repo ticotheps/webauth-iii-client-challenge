@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, NavLink } from 'react-router-dom';
+import { Route, NavLink, withRouter } from 'react-router-dom';
 
 import './App.css';
 import Home from './home/Home';
@@ -37,4 +37,4 @@ class App extends Component {
   };
 }
 
-export default App;
+export default withRouter(App);
