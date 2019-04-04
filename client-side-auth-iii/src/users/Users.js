@@ -7,7 +7,9 @@ class Users extends React.Component {
     }
 
     render() {
-        if (!this.state.users) {
+        const token = localStorage.getItem('token');
+
+        if (!token) {
             return <h3>Please login to see the users</h3>;
         } else {
             return (

@@ -51,7 +51,7 @@ class App extends Component {
     );
   }
 
-  logout = () => {
+  logout = event => {
     localStorage.removeItem("token");
 
     this.props.history.push("/login");
