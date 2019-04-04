@@ -4,7 +4,8 @@ import axios from "axios";
 class Login extends React.Component {
   state = {
     username: "tico",
-    password: "blue"
+    password: "blue",
+    department: "student"
   };
 
   render() {
@@ -42,7 +43,7 @@ class Login extends React.Component {
   handleInputChange = event => {
     const { id, value } = event.target;
 
-    this.setState = { [id]: value };
+    this.setState({ [id]: value });
   };
 
   handleSubmit = event => {

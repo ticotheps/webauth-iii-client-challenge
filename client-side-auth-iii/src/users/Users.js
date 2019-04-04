@@ -12,8 +12,8 @@ class Users extends React.Component {
       <div>
         <h2>List of Users</h2>
         <ul>
-          {this.state.users.map(user => (
-            <li key={user.id}>{user.username}</li>
+          {this.state.users.map(u => (
+            <li key={u.id}>{u.username}</li>
           ))}
         </ul>
       </div>
@@ -21,7 +21,7 @@ class Users extends React.Component {
   }
 
   componentDidMount() {
-    // const endpoint = 'http://localhost:5000/api/users';
+    // const endpoint = 'http://localhost:4000/api/users';
     // ^^^No longer need this hardcoded endpoint because of what
     // the axios.defaults.baseURL statement does for us in 'requiresAuth.js' file
     const endpoint = `/users`;
@@ -34,7 +34,7 @@ class Users extends React.Component {
         .catch(error => {
             console.error('Users error', error);
         });
-        
+
     // NO LONGER NEED THIS CODE BELOW BECAUSE:
     // Created an 'axios.interceptors.request.use()' statement
     // inside the <requiresAuth /> HOC to take care of what
