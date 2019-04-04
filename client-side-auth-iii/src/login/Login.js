@@ -11,13 +11,13 @@ class Login extends React.Component {
     return (
       <div>
         <h2>Login</h2>
-        <form onSubmit="this.handleSubmit">
+        <form onSubmit={this.handleSubmit}>
           <div>
             <label htmlFor="username" />
             <input
               id="username"
-              value="this.state.username"
-              onChange="this.handleInputChange"
+              value={this.state.username}
+              onChange={this.handleInputChange}
               type="text"
             />
           </div>
@@ -25,16 +25,20 @@ class Login extends React.Component {
             <label htmlFor="password" />
             <input
               id="password"
-              value="this.state.password"
-              onChange="this.handleInputChange"
+              value={this.state.password}
+              onChange={this.handleInputChange}
               type="password"
             />
+          </div>
+          <div>
+              <button type="submit">Login</button>
           </div>
         </form>
       </div>
     );
   }
 
+  // allows the user to see what they are typing into the <input> field
   handleInputChange = event => {
     const { id, value } = event.target;
 
@@ -49,11 +53,14 @@ class Login extends React.Component {
     axios
       .post(endpoint, this.state)
       .then(res => {
+        console.log('Login Response:', res);
         localStorage.setItem("jwt", res.data.token);
 
         this.props.history.push("/users");
       })
-      .catch(error => console.error(error));
+      .catch(error => {
+        console.error('Login Error: ', error);
+      });
   };
 }
 
