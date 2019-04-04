@@ -5,7 +5,9 @@ import axios from 'axios';
 
 // tells axios to ALWAYS intercept the request and to do something with it
 axios.interceptors.request.use(function(requestConfig) {
-    
+    const token = localStorage.getItem('token');
+    requestConfig.headers.authorization = token;
+    return requestConfig;
 });
 
 export default function(Component) {

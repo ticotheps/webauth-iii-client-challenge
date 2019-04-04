@@ -22,18 +22,23 @@ class Users extends React.Component {
 
     componentDidMount() {
         const endpoint = 'http://localhost:5000/api/users';
-        const token = localStorage.getItem('jwt');
 
-        const requestConfig = {
-            headers: {
-                authorization: token,
-            }
-        };
+        // Created an 'axios.interceptors.request.use()' statement
+        // inside the <requiresAuth /> HOC to take care of what
+        // 'requestConfig' did previously (BELOW)
+        // 
+        // const token = localStorage.getItem('jwt');
+        // const requestConfig = {
+        //     headers: {
+        //         authorization: token,
+        //     }
+        // };
 
-        axios.get(endpoint, requestConfig).then(res => {
+        axios.get(endpoint).then(res => {
             this.setState({ users: res.data.users })
         });
     }
 }
 
+// export default Users;
 export default requiresAuth(Users);
