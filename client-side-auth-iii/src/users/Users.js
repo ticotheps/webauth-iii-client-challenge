@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import requiresAuth from "../requiresAuth/requiresAuth";
+import requiresAuth from "../auth/requiresAuth";
 
 class Users extends React.Component {
   state = {
@@ -32,7 +32,7 @@ class Users extends React.Component {
             this.setState({ users: res.data });
         })
         .catch(error => {
-            console.error('Users error', error);
+            console.error('USERS ERROR', error);
         });
 
     // NO LONGER NEED THIS CODE BELOW BECAUSE:
