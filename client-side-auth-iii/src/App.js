@@ -10,12 +10,15 @@ class App extends Component {
       <div className="App">
         <header>
           <nav>
+            <NavLink to="/">Home</NavLink>
+            &nbsp;|&nbsp;
             <NavLink to="/login">Login</NavLink>
             &nbsp;|&nbsp;
             <NavLink to="/users">Users</NavLink>
           </nav>
         </header>
         <main>
+          <Route exact path="/" component={Home}></Route>
           <Route path="/login" component={Login}></Route>
           <Route path="/users" component={Users}></Route>
         </main>
