@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import { Route, NavLink, withRouter } from 'react-router-dom';
 
 import './App.css';
+import Home from './home/Home';
 import Login from './login/Login';
+import Users from './users/Users';
 
 class App extends Component {
   render() {
