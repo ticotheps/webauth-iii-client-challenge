@@ -4,8 +4,7 @@ import axios from "axios";
 class Login extends React.Component {
   state = {
     username: "tico",
-    password: "blue",
-    department: "student"
+    password: "blue"
   };
 
   render() {
@@ -54,13 +53,13 @@ class Login extends React.Component {
     axios
       .post(endpoint, this.state)
       .then(res => {
-        console.log('Login Response:', res);
-        localStorage.setItem("jwt", res.data.token);
+        console.log('LOGIN RESPONSE:', res);
+        localStorage.setItem('token', res.data.token);
 
-        this.props.history.push("/users");
+        this.props.history.push('/users');
       })
       .catch(error => {
-        console.error('Login Error: ', error);
+        console.error('LOGIN ERROR: ', error);
       });
   };
 }
