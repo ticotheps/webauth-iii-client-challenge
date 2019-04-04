@@ -26,6 +26,16 @@ class Users extends React.Component {
     // the axios.defaults.baseURL statement does for us in 'requiresAuth.js' file
     const endpoint = `/users`;
 
+    axios
+        .get(endpoint)
+        .then(res => {
+            this.setState({ users: res.data });
+        })
+        .catch(error => {
+            console.error('Users error', error);
+        });
+        
+    // NO LONGER NEED THIS CODE BELOW BECAUSE:
     // Created an 'axios.interceptors.request.use()' statement
     // inside the <requiresAuth /> HOC to take care of what
     // 'requestConfig' did previously (BELOW)
@@ -36,15 +46,6 @@ class Users extends React.Component {
     //         authorization: token,
     //     }
     // };
-
-    axios
-        .get(endpoint)
-        .then(res => {
-            this.setState({ users: res.data });
-        })
-        .catch(error => {
-            console.error('Users error', error);
-        });
   }
 }
 
