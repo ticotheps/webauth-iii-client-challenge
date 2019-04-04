@@ -1,44 +1,44 @@
-import React from 'react';
-import axios from 'axios';
-import requiresAuth from '../requiresAuth/requiresAuth';
+import React from "react";
+import axios from "axios";
+import requiresAuth from "../requiresAuth/requiresAuth";
 
 class Users extends React.Component {
-    state = {
-        users: []
-    };
+  state = {
+    users: []
+  };
 
-    render() {
-        return (
-            <div>
-                <h2>List of Users</h2>
-                <ul>
-                    {this.state.users.map(u => (
-                        <li key={u.id}>{u.username}</li> 
-                    ))}
-                </ul>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        <h2>List of Users</h2>
+        <ul>
+          {this.state.users.map(user => (
+            <li key={user.id}>{user.username}</li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 
-    componentDidMount() {
-        // const endpoint = 'http://localhost:5000/api/users';
-        const endpoint = '/users';
+  componentDidMount() {
+    // const endpoint = 'http://localhost:5000/api/users';
+    const endpoint = `/users`;
 
-        // Created an 'axios.interceptors.request.use()' statement
-        // inside the <requiresAuth /> HOC to take care of what
-        // 'requestConfig' did previously (BELOW)
-        // 
-        // const token = localStorage.getItem('jwt');
-        // const requestConfig = {
-        //     headers: {
-        //         authorization: token,
-        //     }
-        // };
+    // Created an 'axios.interceptors.request.use()' statement
+    // inside the <requiresAuth /> HOC to take care of what
+    // 'requestConfig' did previously (BELOW)
+    // --------------------------------------------------
+    // const token = localStorage.getItem('jwt');
+    // const requestConfig = {
+    //     headers: {
+    //         authorization: token,
+    //     }
+    // };
 
-        axios.get(endpoint).then(res => {
-            this.setState({ users: res.data.users })
-        });
-    }
+    axios.get(endpoint).then(res => {
+      this.setState({ users: res.data.users });
+    });
+  }
 }
 
 // export default Users;
