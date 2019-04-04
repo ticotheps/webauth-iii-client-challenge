@@ -34,6 +34,16 @@ class Login extends React.Component {
         </div>
         );
     }
-}
+
+    handleInputChange = event => {
+        const { id, value } = event.target;
+
+        this.setState = ({ [id]: value });
+    };    
+
+    handleSubmit = event => {
+
+    }
+};
 
 export default Login;
