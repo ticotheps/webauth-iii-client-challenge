@@ -24,13 +24,13 @@ class Users extends React.Component {
         const endpoint = 'http://localhost:5000/api/users';
         const token = localStorage.getItem('jwt');
 
-        const reqOptions = {
+        const requestConfig = {
             headers: {
                 authorization: token,
             }
         };
 
-        axios.get(endpoint, reqOptions).then(res => {
+        axios.get(endpoint, requestConfig).then(res => {
             this.setState({ users: res.data.users })
         });
     }
