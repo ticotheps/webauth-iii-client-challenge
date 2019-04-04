@@ -3,6 +3,9 @@ import axios from 'axios';
 
 // This HOC returns a component
 
+// creates a default url so you don't have to hardcode it in each component
+axios.defaults.baseURL = 'http://localhost:5000/api';
+
 // tells axios to ALWAYS intercept the request and to do something with it
 axios.interceptors.request.use(function(requestConfig) {
     const token = localStorage.getItem('token');

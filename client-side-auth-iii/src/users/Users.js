@@ -21,7 +21,8 @@ class Users extends React.Component {
     }
 
     componentDidMount() {
-        const endpoint = 'http://localhost:5000/api/users';
+        // const endpoint = 'http://localhost:5000/api/users';
+        const endpoint = '/users';
 
         // Created an 'axios.interceptors.request.use()' statement
         // inside the <requiresAuth /> HOC to take care of what
