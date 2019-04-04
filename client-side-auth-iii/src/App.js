@@ -20,6 +20,7 @@ class App extends Component {
             &nbsp;|&nbsp;
             <NavLink to="/users">Users</NavLink>
             &nbsp;|&nbsp;
+            <NavLink to="/signup">Signup</NavLink>
             <button onClick={this.logout}>Logout</button>
           </nav>
         </header>
@@ -44,6 +45,13 @@ class App extends Component {
             render={props => {
               console.log(props);
               return <Users {...props} />;
+            }}
+          />
+          <Route
+            path="/signup"
+            render={props => {
+              console.log(props);
+              return <Signup {...props} />;
             }}
           />
         </main>
