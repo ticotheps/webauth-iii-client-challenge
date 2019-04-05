@@ -1,28 +1,70 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Route, NavLink, withRouter } from "react-router-dom";
+
+import "./App.css";
+import Home from "./home/Home";
+import Login from "./login/Login";
+import Users from "./users/Users";
+import Signup from "./signup/Signup";
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
+        <header>
+          <nav>
+            <NavLink exact to="/">
+              Home
+            </NavLink>
+            &nbsp;|&nbsp;
+            <NavLink to="/login">Login</NavLink>
+            &nbsp;|&nbsp;
+            <NavLink to="/users">Users</NavLink>
+            &nbsp;|&nbsp;
+            <NavLink to="/signup">Signup</NavLink>
+            <button onClick={this.logout}>Logout</button>
+          </nav>
         </header>
+        <main>
+          <Route
+            exact
+            path="/"
+            render={props => {
+              console.log(props);
+              return <Home {...props} />;
+            }}
+          />
+          <Route
+            path="/login"
+            render={props => {
+              console.log(props);
+              return <Login {...props} />;
+            }}
+          />
+          <Route
+            path="/users"
+            render={props => {
+              console.log(props);
+              return <Users {...props} />;
+            }}
+          />
+          <Route
+            path="/signup"
+            render={props => {
+              console.log(props);
+              return <Signup {...props} />;
+            }}
+          />
+        </main>
       </div>
     );
   }
+
+  logout = event => {
+    localStorage.removeItem("token");
+
+    this.props.history.push("/login");
+  };
 }
 
-export default App;
+export default withRouter(App);
